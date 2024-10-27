@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Video List</h1>
+        {% comment %} <a href="{% url 'upload_video' %}" class="btn">Upload Video</a> {% endcomment %}
+        <ul class="video-list">
+            {% for video in videos %}
+            <li>
+                <h2>{{ video.title }}</h2>
+                <video width="320" height="240" controls>
+                    <source src="{{ video.video_file.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

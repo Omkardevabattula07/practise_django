@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Search</title>
+</head>
+<body>
+    <h1>Search for Books</h1>
+    <form method="GET" action="">
+        <input type="text" name="title" placeholder="Enter book title" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <h2>Results:</h2>
+        <ul>
+            {% for item in results %}
+                <li>{{ item.volumeInfo.title }} by {{ item.volumeInfo.authors|join:", " }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</body>
+</html>
